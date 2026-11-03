@@ -6,7 +6,6 @@ import com.example.student_management_system.Model.UserRole;
 import com.example.student_management_system.Repository.StudentRepository;
 import com.example.student_management_system.Repository.UserRepository;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,11 +13,15 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class AuthController {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
-    private StudentRepository studentRepository;
+    private final StudentRepository studentRepository;
+
+
+    AuthController(UserRepository userRepository, StudentRepository studentRepository) {
+        this.userRepository = userRepository;
+        this.studentRepository = studentRepository;
+    }
 
 
 

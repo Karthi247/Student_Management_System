@@ -5,7 +5,6 @@ import com.example.student_management_system.Repository.CourseRepository;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +13,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/courses")
 public class CourseController {
 
-    @Autowired
-    private CourseRepository courseRepository;
+    private final CourseRepository courseRepository;
+
+    CourseController(CourseRepository courseRepository) {
+        this.courseRepository = courseRepository;
+    }
 
     // ✅ View all courses
     @GetMapping("")

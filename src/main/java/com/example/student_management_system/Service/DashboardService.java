@@ -1,7 +1,6 @@
 package com.example.student_management_system.Service;
 
 import com.example.student_management_system.Repository.StudentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -9,8 +8,11 @@ import java.util.*;
 @Service
 public class DashboardService {
 
-    @Autowired
-    private StudentRepository studentRepository;
+    private final StudentRepository studentRepository;
+
+    DashboardService(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
 
     public long getTotalStudents() {
         return studentRepository.count();
